@@ -111,6 +111,36 @@ tick:
 makes a live graph view faster: at 1 000 nodes the force math is a few
 milliseconds of a frame, and the rest is the renderer.
 
+## Using it locally before it is published
+
+Nothing needs to be on crates.io or npm. For a Vite consumer such as
+nemo-graph (verified with Vite 8, no wasm plugin required):
+
+```
+wasm-pack build crates/forcefield-wasm --release --target web --out-dir pkg-web --out-name forcefield
+cd <consumer>/ui
+npm install ../../Projects/forcefield/js/cytoscape-forcefield ../../Projects/forcefield/crates/forcefield-wasm/pkg-web
+```
+
+npm records them as `file:` dependencies and symlinks them, so edits and
+rebuilds in this repo show up in the consumer without reinstalling. Then,
+where `cytoscape.use(d3Force)` was:
+
+```js
+import init, * as wasm from 'forcefield-wasm'
+import forcefield from 'cytoscape-forcefield'
+await init()                    // top-level await; or call it in the app bootstrap
+forcefield(cytoscape, wasm)     // registers layout name 'forcefield'
+```
+
+and change the layout config's `name: 'd3-force'` to `'forcefield'`. The
+`web` target is the one that needs no bundler plugin: its glue loads the
+`.wasm` through `new URL(…, import.meta.url)`, which Vite turns into an
+emitted asset.
+
+For a Rust consumer (a Tauri backend doing one-shot layouts), a path
+dependency: `forcefield = { path = "../../Projects/forcefield/crates/forcefield" }`.
+
 ## Developing
 
 ```
