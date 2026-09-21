@@ -1,0 +1,14 @@
+[package]
+name = "forcefield"
+description = "Hand port of d3-force (and its Barnes-Hut quadtree) to Rust: pure float math, tick-for-tick parity with the JS reference"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+keywords = ["graph", "layout", "force-directed", "d3", "barnes-hut"]
+categories = ["algorithms", "visualization"]
+
+[dependencies]
+
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }

@@ -1,0 +1,38 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - run: cargo test --workspace --exclude forcefield-wasm
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo fmt --all --check
+      - run: cargo build -p forcefield-wasm --target wasm32-unknown-unknown --release
+  parity-regen:
+    # The fixtures are committed; this job proves they are reproducible
+    # from the JS reference and that the Rust port still matches them.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cd parity && npm ci && npm run gen
+      - run: git diff --exit-code -- parity/fixtures
+      - run: cargo test -p forcefield --test parity
+  js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - run: cargo install wasm-pack
+      - run: npm ci --prefix js/cytoscape-forcefield
+      - run: npm test --prefix js/cytoscape-forcefield

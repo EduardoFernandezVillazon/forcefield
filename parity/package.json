@@ -1,0 +1,12 @@
+{
+  "name": "forcefield-parity",
+  "private": true,
+  "type": "module",
+  "description": "Generates golden tick-by-tick frames from the d3-force JS reference for the Rust parity test",
+  "scripts": {
+    "gen": "node gen.mjs"
+  },
+  "dependencies": {
+    "d3-force": "2.1.1"
+  }
+}
