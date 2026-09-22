@@ -34,5 +34,6 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
       - run: cargo install wasm-pack
+      - run: wasm-pack build crates/forcefield-wasm --release --target nodejs --out-dir pkg-node --out-name forcefield
       - run: npm ci --prefix js/cytoscape-forcefield
       - run: npm test --prefix js/cytoscape-forcefield
