@@ -111,10 +111,22 @@ tick:
 makes a live graph view faster: at 1 000 nodes the force math is a few
 milliseconds of a frame, and the rest is the renderer.
 
-## Using it locally before it is published
+## Installing the JS packages
 
-Nothing needs to be on crates.io or npm. For a Vite consumer such as
-nemo-graph (verified with Vite 8, no wasm plugin required):
+They are not on the npm registry. Each GitHub release attaches both as npm
+tarballs, which npm installs from a URL like any other dependency (verified
+with Vite 8, no wasm plugin required):
+
+```
+npm install https://github.com/EduardoFernandezVillazon/forcefield/releases/download/v0.1.0/forcefield-wasm-0.1.0.tgz \
+            https://github.com/EduardoFernandezVillazon/forcefield/releases/download/v0.1.0/cytoscape-forcefield-0.1.0.tgz
+```
+
+The Rust crate is `forcefield` on crates.io.
+
+### Working from a local checkout
+
+For hacking on this repo alongside a consumer:
 
 ```
 wasm-pack build crates/forcefield-wasm --release --target web --out-dir pkg-web --out-name forcefield
@@ -123,8 +135,11 @@ npm install ../../Projects/forcefield/js/cytoscape-forcefield ../../Projects/for
 ```
 
 npm records them as `file:` dependencies and symlinks them, so edits and
-rebuilds in this repo show up in the consumer without reinstalling. Then,
-where `cytoscape.use(d3Force)` was:
+rebuilds in this repo show up in the consumer without reinstalling.
+
+### Wiring it in
+
+Where `cytoscape.use(d3Force)` was:
 
 ```js
 import init, * as wasm from 'forcefield-wasm'
