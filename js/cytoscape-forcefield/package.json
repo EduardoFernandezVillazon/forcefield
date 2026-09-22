@@ -8,12 +8,15 @@
     ".": "./src/index.js",
     "./simulation": "./src/simulation.js"
   },
-  "files": ["src"],
+  "files": ["src", "README.md", "LICENSE"],
   "scripts": {
     "test": "node --test test/"
   },
   "keywords": ["cytoscape", "cytoscape-extension", "layout", "force-directed", "wasm"],
   "license": "MIT",
+  "author": "Eduardo Fernandez Villazon",
+  "repository": { "type": "git", "url": "git+https://github.com/EduardoFernandezVillazon/forcefield.git", "directory": "js/cytoscape-forcefield" },
+  "homepage": "https://github.com/EduardoFernandezVillazon/forcefield#cytoscape",
   "peerDependencies": {
     "cytoscape": "^3.2.0"
   },

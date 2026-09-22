@@ -6,6 +6,8 @@ members = ["crates/forcefield", "crates/forcefield-wasm"]
 version = "0.1.0"
 edition = "2021"
 license = "BSD-3-Clause"
+repository = "https://github.com/EduardoFernandezVillazon/forcefield"
+authors = ["Eduardo Fernandez Villazon"]
 
 [profile.release]
 opt-level = 3

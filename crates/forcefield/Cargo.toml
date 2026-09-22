@@ -4,6 +4,9 @@ description = "Hand port of d3-force (and its Barnes-Hut quadtree) to Rust: pure
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+repository.workspace = true
+authors.workspace = true
+readme = "../../README.md"
 keywords = ["graph", "layout", "force-directed", "d3", "barnes-hut"]
 categories = ["algorithms", "visualization"]
 

@@ -2,7 +2,7 @@
 
 Written 2026-09-21 from the project brief that started this repository.
 
-## 0. The diagnostic that gates whether this helps you (NOT YET RUN)
+## 0. The diagnostic that gates whether this helps you — RUN, positive
 
 The premise is that a graph view running `cytoscape-d3-force` gets clunky
 because the force simulation runs in JS on the main thread. The brief's own
@@ -20,7 +20,10 @@ settle (adaptive cooling stops it), then pan, zoom and drag.
   cost, and this project is aimed correctly. Expect roughly 2× on the force
   math from wasm (see the README table), not 2× on the frame.
 
-Write the answer here when you have it.
+**Result (2026-09-22, in nemo-graph on the installed build):** smooth when
+settled, clunky only while it moves. The tick loop was the cost. After the
+swap the user reports the difference is "quite noticeably better"; no fps
+figure was recorded.
 
 ## 1. Port d3-force 2.1.1, which is also 3.0.0
 
@@ -106,13 +109,8 @@ a version broke the build, so `wasm-opt = false` is set in the crate
 metadata. Turn it on (`["-O3"]`) when a working binaryen is on PATH; expect
 a few percent.
 
-## Not done
+## Status
 
-- The gating diagnostic (§0).
-- Publishing: crates.io for `forcefield`, npm for `forcefield-wasm` and
-  `cytoscape-forcefield`. Nothing has been published.
-- Copyright holder in `LICENSE` is "forcefield contributors"; put a name.
-- Trying the adapter inside the real consumer (nemo-graph): it exposes the
-  same `layout.simulation` surface the consumer uses (`nodes()`, `force()`,
-  `alphaTarget().restart()`, `on('tick.adaptive')`, `n.fx = null`), but that
-  has been exercised headless in Node, not in the app.
+- Integrated into nemo-graph (its `changes/2026-09-22-forcefield-layout-engine.md`)
+  through npm `file:` links and verified in-app 2026-09-22.
+- Published: see the README badges/links once the registries have it.
