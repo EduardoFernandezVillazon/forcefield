@@ -18,7 +18,8 @@ the same through the wasm boundary, custom JS force included.
 |---|---|
 | `crates/forcefield` | core crate: pure `f64` math, no I/O, no timers. Quadtree, simulation, seven forces. |
 | `crates/forcefield-wasm` | wasm-bindgen bindings. Positions are a zero-copy `Float64Array` view onto wasm memory. |
-| `js/cytoscape-forcefield` | fork of `cytoscape-d3-force` 1.1.4 with a d3-shaped `Simulation` facade over the wasm build. |
+| `js/forcefield-sim` | the d3-shaped `Simulation` facade over the wasm build, plus a Web Worker runtime and client (`forcefield-sim/worker`, `forcefield-sim/client`). |
+| `js/cytoscape-forcefield` | fork of `cytoscape-d3-force` 1.1.4 driving forcefield-sim. |
 | `parity/` | golden-frame generator (Node + d3-force 2.1.1) and the committed fixtures. |
 | `docs/DECISIONS.md` | decisions taken and the diagnostic that gates whether this project helps you at all. |
 | `third_party/` | upstream licence notices. |

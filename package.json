@@ -1,0 +1,8 @@
+{
+  "name": "forcefield-monorepo",
+  "private": true,
+  "workspaces": ["js/forcefield-sim", "js/cytoscape-forcefield"],
+  "scripts": {
+    "test": "npm test --workspaces"
+  }
+}

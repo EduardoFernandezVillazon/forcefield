@@ -1,7 +1,7 @@
 {
   "name": "cytoscape-forcefield",
-  "version": "0.1.0",
-  "description": "cytoscape.js layout driven by the forcefield wasm simulation (a Rust port of d3-force); fork of cytoscape-d3-force",
+  "version": "0.2.0",
+  "description": "cytoscape.js layout driven by the forcefield wasm simulation (a Rust port of d3-force) through forcefield-sim; fork of cytoscape-d3-force",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -37,5 +37,8 @@
   "devDependencies": {
     "cytoscape": "^3.33.2",
     "d3-force": "2.1.1"
+  },
+  "dependencies": {
+    "forcefield-sim": "^0.2.0"
   }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "forcefield-sim",
+  "version": "0.2.0",
+  "description": "d3-force-compatible simulation API over forcefield-wasm, plus a Web Worker runtime and client that stream positions as transferable buffers",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./worker": "./src/worker.js",
+    "./client": "./src/client.js"
+  },
+  "files": [
+    "src",
+    "test-support",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "keywords": [
+    "d3-force",
+    "force-directed",
+    "graph",
+    "layout",
+    "wasm",
+    "web-worker"
+  ],
+  "author": "Eduardo Fernandez Villazon",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoFernandezVillazon/forcefield.git",
+    "directory": "js/forcefield-sim"
+  },
+  "peerDependencies": {
+    "forcefield-wasm": "^0.1.0"
+  },
+  "devDependencies": {
+    "d3-force": "2.1.1",
+    "forcefield-wasm": "^0.1.0"
+  }
+}

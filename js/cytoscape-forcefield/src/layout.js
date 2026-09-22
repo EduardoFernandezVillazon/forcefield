@@ -10,7 +10,7 @@
 //   * `Object.assign` is used directly instead of the polyfill.
 
 import defaults from './defaults.js'
-import { Simulation, forceCollide, forceLink, forceManyBody, forceX, forceY, forceRadial, forceCenter } from './simulation.js'
+import { Simulation, forceCollide, forceLink, forceManyBody, forceX, forceY, forceRadial, forceCenter } from 'forcefield-sim'
 
 const assign = Object.assign
 
